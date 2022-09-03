@@ -1,0 +1,111 @@
+site:
+  label: 标题设置
+  items:
+    sub_title:
+      name: 副标题
+      label: 副标题
+      type: text
+    archives_title:
+      name: archives_title
+      label: 归档页标题
+      type: text
+      default: '博客'
+      description: '/archives 页面显示的标题名字'
+    photos_title:
+      name: photos_title
+      label: 图库页标题
+      type: text
+      default: '图库'
+      description: '/photos 页面显示的标题名字'
+    journals_title:
+      name: journals_title
+      label: 日志页标题
+      type: text
+      default: '日志'
+      description: '/journals 页面显示的标题名字'
+    api_authorization:
+      name: api_authorization
+      label: Access key
+      type: text
+      default: ''
+      description: 接口认证
+    time_statistics:
+      name: time_statistics
+      label: 站点时间统计
+      type: text
+      description: 填入起始时间，格式：月/日/年 时:分:秒，如08/20/2022 12:00:00
+    icp:
+      name: icp
+      label: ICP 备案号
+    public_security_record:
+      name: public_security_record
+      label: 网安备案号
+sns:
+  label: 社交资料
+  items:
+    github:
+      name: github
+      label: github
+      type: text
+    coolapk:
+      name: coolapk
+      label: 酷安
+      type: text
+    weibo:
+      name: weibo
+      label: 微博
+      type: text
+    wechat:
+      name: wechat
+      label: 微信二维码
+      type: text
+    qq:
+      name: qq
+      label: QQ
+      type: text
+    bilibili:
+      name: bilibili
+      label: bilibili
+      type: text
+    netease_cloud_music:
+      name: netease_cloud_music
+      label: 网易云音乐
+      type: text
+    steam:
+      name: steam
+      label: steam
+      type: text
+    email:
+      name: email
+      label: 邮箱
+      type: text
+    rss:
+      name: rss
+      label: rss
+      type: rss
+theme:
+  label: 外观设置
+  items:
+    init_click:
+      name: init_click
+      label: 局部刷新
+      type: radio
+      default: open
+      options:
+        - value: open
+          label: 开
+        - value: close
+          label: 关
+    font:
+      name: font
+      label: 字体
+      type: select
+      data-type: 'string'
+      default: 'oppo-sans'
+      options:
+        - value: 'oppo-sans'
+          label: 'OPPO Sans'
+        - value: 'Mi-Sans'
+          label: 'Mi Sans'
+        - value: 'system'
+          label: '系统字体'
