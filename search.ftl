@@ -67,6 +67,7 @@
         </div>
     </div>
 </div>
+<@moonMenu/>
 <@footer/>
 </body>
 </html>
