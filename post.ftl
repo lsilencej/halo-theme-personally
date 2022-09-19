@@ -1,10 +1,10 @@
 <#include "module/macro.ftl"/>
 <@head title="${post.title!} - ${blog_title!}"/>
 
-<body class="bg-[#f9f9f9]">
+<body class="bg-[#f9f9f9] moon-main">
 <div class="flex flex-col lg:flex-row">
     <@header/>
-    <div class="flex flex-col lg:pl-[300px] w-full">
+    <div class="flex flex-col lg:pl-[330px] w-full">
         <div class="page-title my-20 mx-auto lg:page-mqx-width w-full lg:px-[40px]">
             <h1 class="text-4xl font-black subpixel-antialiased pl-4 lg:pl-0" id="fillTitle">${post.title!}</h1>
         </div>
@@ -92,6 +92,7 @@
         </div>
     </div>
 </div>
+<@moonMenu/>
 <@footer/>
 </body>
 </html>

@@ -1,6 +1,11 @@
 site:
   label: 标题设置
   items:
+    link_disp:
+      name: link_disp
+      label: 显示的友链分组
+      type: text
+      default: 'Home'
     sub_title:
       name: 副标题
       label: 副标题
@@ -34,12 +39,6 @@ site:
       label: 站点时间统计
       type: text
       description: 填入起始时间，格式：月/日/年 时:分:秒，如08/20/2022 12:00:00
-    icp:
-      name: icp
-      label: ICP 备案号
-    public_security_record:
-      name: public_security_record
-      label: 网安备案号
 sns:
   label: 社交资料
   items:
@@ -82,7 +81,7 @@ sns:
     rss:
       name: rss
       label: rss
-      type: rss
+      type: text
 theme:
   label: 外观设置
   items:
@@ -109,3 +108,22 @@ theme:
           label: 'Mi Sans'
         - value: 'system'
           label: '系统字体'
+    moe_beian:
+      name: moe_beian
+      label: 萌 ICP 备案号
+      type: text
+    moe_beian_code:
+      name: moe_beian_code
+      label: 萌 ICP 备案编号
+    icp_beian:
+      name: icp_beian
+      label: ICP 备案号
+      type: text
+    ga_beian_content:
+      name: ga_beian_content
+      label: 公安备案内容
+      type: text
+    ga_beian_code:
+      name: ga_beian_code
+      label: 公安备案编号
+      type: text
