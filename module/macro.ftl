@@ -31,6 +31,7 @@
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"></noscript>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
         <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/11.4.0/styles/github.min.css" type="text/css" rel="stylesheet" />
+        <link href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.12.0/katex.min.css" type="text/css" rel="stylesheet" />
         <link type='text/css' rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"/>
         <script>
             var _hmt = _hmt || [];
@@ -67,6 +68,14 @@
             }
         </style>
         </#if>
+        <#if settings.font == 'HarmonyOS-Sans'>
+            <link rel="stylesheet" href="https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" as="style">
+            <style>
+                html {
+                    font-family: 'HarmonyOS_Regular', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                }
+            </style>
+        </#if>
         <#if settings.font == 'system'>
             <style>
                 @font-face {
@@ -94,7 +103,7 @@
     <header class="hidden fixed w-[330px] px-16 h-screen space-y-16 lg:flex flex-col justify-center content-start bg-white">
         <div class="logo">
             <a href="${blog_url!}" title="${blog_title!}">
-                <img src="${blog_logo!}" alt="${blog_title!}">
+                <img src="${blog_logo!}" alt="${blog_title!}" class="max-h-20">
             </a>
         </div>
         <div class="nav">
@@ -215,7 +224,7 @@
         <div class="flex justify-between p-4">
             <div class="logo">
                 <a href="${blog_url!}" title="${blog_title!}">
-                    <img src="${blog_logo!}" alt="${blog_title!}">
+                    <img class="max-h-8" src="${blog_logo!}" alt="${blog_title!}">
                 </a>
             </div>
             <div class="menu">
@@ -281,7 +290,12 @@
 </#macro>
 
 <#macro footer>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <#if settings.cursor_bg == 'open'>
+    <div class="mouse-cursor cursor-outer hidden lg:block" style="" data-no-instant></div>
+    <div class="mouse-cursor cursor-inner hidden lg:block" style="" data-no-instant></div>
+    </#if>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/smoothscroll/1.4.10/SmoothScroll.min.js" type="application/javascript"></script>
+    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" type="application/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
     <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/11.4.0/highlight.min.js" type="application/javascript"></script>
     <script src="${theme_base!}/source/js/daisy.js"></script>
@@ -289,12 +303,14 @@
     <script src="${theme_base!}/source/js/moment.js"></script>
     <script src="${theme_base!}/source/js/echarts.min.js"></script>
     <script src="${theme_base!}/source/js/category-echart.js"></script>
-    <@global.footer />
     <script>
         hljs.highlightAll();
         loadHotPost(5, '${blog_url!}', '${settings.api_authorization!}')
         lightBox('.markdown-body img', 'post')
         generateCatalog()
+        <#if settings.cursor_bg == 'open'>
+        daisy_cursor()
+        </#if>
         var url = location.href;
         var urlstatus = false;
         $(".nav li a").each(function () {
@@ -762,6 +778,7 @@
         };
     </script>
     </#if>
+    <@global.footer />
 </#macro>
 
 <#macro widgetRecentComments>
@@ -807,18 +824,20 @@
 </#macro>
 
 <#macro widgetHotPost>
-    <div class="widget bg-white w-full p-8 hover:shadow-lg duration-300">
-        <div class="widget-title text-black font-bold mb-2">
-            <p>热门文章</p>
+    <#if settings.api_authorization?? && settings.api_authorization != "">
+        <div class="widget bg-white w-full p-8 hover:shadow-lg duration-300">
+            <div class="widget-title text-black font-bold mb-2">
+                <p>热门文章</p>
+            </div>
+            <div class="widget-hr border-b border-gray-300 w-full mb-4">
+            </div>
+            <div class="widget-content text-767676">
+                <ul id="hotPosts">
+                    <li class="text-center">Loading……</li>
+                </ul>
+            </div>
         </div>
-        <div class="widget-hr border-b border-gray-300 w-full mb-4">
-        </div>
-        <div class="widget-content text-767676">
-            <ul id="hotPosts">
-                <li class="text-center">Loading……</li>
-            </ul>
-        </div>
-    </div>
+    </#if>
 </#macro>
 
 <#macro widgetNewPost>
@@ -919,12 +938,16 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5278166679397841"
      crossorigin="anonymous"></script>
      <div class="widget bg-white w-full p-8 hover:shadow-lg duration-300">
-        <ins class="adsbygoogle"
-        style="display:block; text-align:center;"
-        data-ad-layout="in-article"
-        data-ad-format="fluid"
-        data-ad-client="ca-pub-5278166679397841"
-        data-ad-slot="2447169246"></ins>
+         <div class="widget-title text-black font-bold mb-2">
+             <p>广告</p>
+         </div>
+         <div class="widget-hr border-b border-gray-300 w-full mb-4"></div>
+         <ins class="adsbygoogle"
+              style="display:block; text-align:center;"
+              data-ad-layout="in-article"
+              data-ad-format="fluid"
+              data-ad-client="ca-pub-5278166679397841"
+              data-ad-slot="2447169246"></ins>
     </div>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});

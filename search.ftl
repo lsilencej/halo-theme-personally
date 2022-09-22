@@ -1,7 +1,7 @@
 <#include "module/macro.ftl"/>
 <@head title="${keyword!} - ${blog_title!}"/>
 
-<body class="bg-[#f9f9f9]">
+<body class="bg-[#f9f9f9] moon-main">
 <div class="flex flex-col lg:flex-row">
     <@header/>
     <div class="flex flex-col lg:pl-[330px] w-full">
@@ -62,6 +62,7 @@
                     <@widgetHotPost/>
                     <@widgetRecentComments/>
                     <@widgetLinks/>
+                    <@advertise/>
                 </div>
             </div>
         </div>

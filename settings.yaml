@@ -56,7 +56,7 @@ sns:
       type: text
     wechat:
       name: wechat
-      label: 微信二维码
+      label: 微信
       type: text
     qq:
       name: qq
@@ -106,8 +106,23 @@ theme:
           label: 'OPPO Sans'
         - value: 'Mi-Sans'
           label: 'Mi Sans'
+        - value: 'HarmonyOS-Sans'
+          label: 'HarmonyOS Sans'
         - value: 'system'
           label: '系统字体'
+    cursor_bg:
+      name: cursor_bg
+      label: 光标背景
+      type: radio
+      default: open
+      options:
+        - value: open
+          label: 开
+        - value: close
+          label: 关
+beian:
+  label: 备案设置
+  items:
     moe_beian:
       name: moe_beian
       label: 萌 ICP 备案号

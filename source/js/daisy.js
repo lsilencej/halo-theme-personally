@@ -16,7 +16,7 @@ function loadHotPost(size, blogUrl, api_authorization) {
             $("#hotPosts").empty()
             $(result.data.content).each((index, item) => {
                 $("#hotPosts").append(
-                    '<li class="py-1 w-full flex justify-start space-x-1"><div class="truncate block"><i class="ri-arrow-right-s-fill"></i><a href="' + item.fullPath + '" class="hover:text-black" title="' + item.title + '">' + item.title + '</a></div></li>'
+                        '<li class="py-1 w-full flex justify-start space-x-1"><div class="truncate block"><i class="ri-arrow-right-s-fill"></i><a href="' + item.fullPath + '" class="hover:text-black" title="' + item.title + '">' + item.title + '</a></div></li>'
                 )
             })
         }
@@ -75,4 +75,22 @@ function removeCommentCopyright() {
         style.innerHTML = '.edition { display: none }'
         comment.shadowRoot.append(style)
     }
+}
+
+function daisy_cursor() {
+    const e = document.querySelector(".cursor-inner"),
+            t = document.querySelector(".cursor-outer");
+    e.style.visibility = "visible"
+    t.style.visibility = "visible"
+    window.onmousemove = function (s) {
+        t.style.transform = "translate(" + s.clientX + "px, " + s.clientY + "px)"
+        e.style.transform = "translate(" + s.clientX + "px, " + s.clientY + "px)"
+    }
+    $("body").on("mouseenter", "a", function () {
+        e.classList.add("cursor-hover")
+        t.classList.add("cursor-hover")
+    })
+    $("body").on("mouseleave", "a, .cursor-pointer", function () {
+        $(this).is("a") && $(this).closest(".cursor-pointer").length || (e.classList.remove("cursor-hover"), t.classList.remove("cursor-hover"))
+    })
 }

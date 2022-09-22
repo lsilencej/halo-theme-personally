@@ -87,6 +87,7 @@
                     <@widgetHotPost/>
                     <@widgetRecentComments/>
                     <@widgetNewPost/>
+                    <@advertise/>
                 </div>
             </div>
         </div>

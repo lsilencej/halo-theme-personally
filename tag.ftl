@@ -69,10 +69,5 @@
 </div>
 <@moonMenu/>
 <@footer/>
-<script>
-    $(function () {
-        loadHotPost(5, '${blog_url!}', '${settings.api_authorization!}')
-    })
-</script>
 </body>
 </html>
