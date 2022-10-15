@@ -16,7 +16,7 @@ function loadHotPost(size, blogUrl, api_authorization) {
             $("#hotPosts").empty()
             $(result.data.content).each((index, item) => {
                 $("#hotPosts").append(
-                        '<li class="py-1 w-full flex justify-start space-x-1"><div class="truncate block"><i class="ri-arrow-right-s-fill"></i><a href="' + item.fullPath + '" class="hover:text-black dark:hover:text-white" title="' + item.title + '">' + item.title + '</a></div></li>'
+                    '<li class="py-1 w-full flex justify-start space-x-1"><div class="truncate block"><i class="ri-arrow-right-s-fill"></i><a href="' + item.fullPath + '" class="hover:text-black dark:hover:text-white" title="' + item.title + '">' + item.title + '</a></div></li>'
                 )
             })
         }
@@ -79,7 +79,7 @@ function removeCommentCopyright() {
 
 function daisy_cursor() {
     const e = document.querySelector(".cursor-inner"),
-            t = document.querySelector(".cursor-outer");
+        t = document.querySelector(".cursor-outer");
     e.style.visibility = "visible"
     t.style.visibility = "visible"
     window.onmousemove = function (s) {
@@ -110,7 +110,7 @@ function toggleDarkMode() {
     darkMode()
 }
 
-function darkMode () {
+function darkMode() {
     var dark = window.localStorage.getItem('dark')
     if (!dark) {
         return
@@ -118,6 +118,7 @@ function darkMode () {
     var comment = document.getElementsByTagName("halo-comment")
     if (dark == 1) {
         $('html').addClass('dark')
+        $('#coolapk').children('svg').children('path').attr('fill', '#767676')
         if (comment) {
             var haloComment = comment[0].shadowRoot.getElementById("halo-comment")
             $(haloComment).addClass('dark')
@@ -126,6 +127,7 @@ function darkMode () {
     }
     if (dark == 0) {
         $('html').removeClass('dark')
+        $('#coolapk').children('svg').children('path').attr('fill', '#000000')
         if (comment) {
             var haloComment = comment[0].shadowRoot.getElementById("halo-comment")
             $(haloComment).removeClass('dark')

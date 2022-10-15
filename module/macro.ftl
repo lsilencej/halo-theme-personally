@@ -130,7 +130,7 @@
         </div>
         <div class="copyright text-767676 dark-text-[#999]">
             <p>
-                <a class="text-black" href="${blog_url!}">${blog_title!}</a>
+                <a class="text-black dark:text-white" href="${blog_url!}">${blog_title!}</a>
             </p>
             <p>
                Copyright © 2018-${.now?string("yyyy")}
@@ -475,8 +475,11 @@
             },
             tooltip: {
                 padding: 10,
-                backgroundColor: '#555',
+                backgroundColor: '#000',
                 borderColor: '#777',
+                textStyle: {
+                    color: '#fff'
+                },
                 borderWidth: 1,
                 formatter: function (obj) {
                     var value = obj.value;
@@ -748,7 +751,7 @@
                 success: function (response) {
                     siteSource = response.data;
                     siteSource.series[0].radius = [0, '30%'];
-                    siteSource.series[0].data[1].selected = true;
+                    siteSource.series[0].data[0].selected = true;
                     siteSource.series[1].radius = ['45%', '60%'];
                 }
             });
@@ -765,7 +768,7 @@
             success: function (response) {
                 siteSource = response.data;
                 siteSource.series[0].radius = [0, '30%'];
-                siteSource.series[0].data[1].selected = true;
+                siteSource.series[0].data[0].selected = true;
                 siteSource.series[1].radius = ['45%', '60%'];
             }
         });
@@ -910,7 +913,7 @@
             <span class="moon-menu-item" onclick="back2Bottom()" style="opacity: 0;">
                 <i class="ri-arrow-down-line" aria-hidden="true"></i>
             </span>
-            <span class="moon-menu-item" onclick="toSearchBox()" style="opacity: 0;">
+            <span class="moon-menu-item" onclick="toggleSearch()" style="opacity: 0;">
                 <i class="fa fa-search" aria-hidden="true"></i>
             </span>
         </div>
@@ -933,8 +936,8 @@
 </#macro>
 
 <#macro widgetTagsCloud>
-    <div class="widget bg-white w-full p-8 hover:shadow-lg duration-300">
-        <div class="widget-title text-black font-bold mb-2">
+    <div class="widget bg-white w-full p-8 hover:shadow-lg duration-300 dark:bg-neutral-900">
+        <div class="widget-title text-black font-bold mb-2 dark:text-[#999]">
             <p>标签云</p>
         </div>
         <div class="widget-hr border-b border-gray-300 w-full mb-4">
@@ -946,8 +949,8 @@
 <#macro advertise>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5278166679397841"
      crossorigin="anonymous"></script>
-     <div class="widget bg-white w-full p-8 hover:shadow-lg duration-300">
-         <div class="widget-title text-black font-bold mb-2">
+     <div class="widget bg-white w-full p-8 hover:shadow-lg duration-300 dark:bg-neutral-900">
+         <div class="widget-title text-black font-bold mb-2 dark:text-[#999]">
              <p>广告</p>
          </div>
          <div class="widget-hr border-b border-gray-300 w-full mb-4"></div>
